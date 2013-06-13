@@ -2,18 +2,29 @@
 
 require 'yaml'
 require 'ostruct'
+require 'erubis'
+
+def readconf(filename)
+  #reads a yaml file in 'config/vagrant'
+  pwd = File.dirname(__FILE__)
+  conf_file = File.join(pwd, "config", filename)
+  vconf = Erubis::Eruby.new(File.open(conf_file, File::RDONLY).read)
+  vconf = vconf.result(def_host_share: pwd)
+  vconf = YAML::load(vconf)
+end
+
+@conf = readconf('vagrant.yml')['default']
 
 Vagrant.configure("2") do |config|
   config.vm.box = "dummy"
 
   config.vm.provider :aws do |aws, override|
-    aws.access_key_id = "YOUR KEY"
-    aws.secret_access_key = "YOUR SECRET KEY"
-    aws.keypair_name = "KEYPAIR NAME"
+    aws.ami = @conf['aws']['ami']
+    aws.access_key_id = @conf['aws']['access_key_id']
+    aws.secret_access_key = @conf['aws']['secret_access_key']
+    aws.keypair_name = @conf['aws']['keypair_name']
 
-    aws.ami = "ami-7747d01e"
-
-    override.ssh.username = "ubuntu"
-    override.ssh.private_key_path = "PATH TO YOUR PRIVATE KEY"
+    override.ssh.username = @conf['aws']['ssh']['username']
+    override.ssh.private_key_path = @conf['aws']['ssh']['private_key_path']
   end
 end
