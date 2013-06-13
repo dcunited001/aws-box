@@ -1,4 +1,5 @@
 default:
+  box: aws-dummy
   aws:
     ami: ami-7747d01e
     access_key_id: ACCESS_KEY_ID

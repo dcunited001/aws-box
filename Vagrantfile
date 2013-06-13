@@ -16,7 +16,7 @@ end
 @conf = readconf('vagrant.yml')['default']
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "dummy"
+  config.vm.box = @conf['box']
 
   config.vm.provider :aws do |aws, override|
     aws.ami = @conf['aws']['ami']
