@@ -4,7 +4,8 @@ default:
     ami: ami-7747d01e
     access_key_id: ACCESS_KEY_ID
     secret_access_key: SECRET_ACCESS_KEY
-    keypair_name: KEYPAIR_NAME
+    keypair_name: KeyPairName
+    security_groups: ['vagrant']
     ssh:
-      username: SSH_USERNAME
-      private_key_path: SSH_PRIVATE_KEY_PATH
+      username: ubuntu
+      private_key_path: ~/.ssh/KeyPairName.pem
