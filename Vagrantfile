@@ -23,6 +23,7 @@ Vagrant.configure("2") do |config|
     aws.access_key_id = @conf['aws']['access_key_id']
     aws.secret_access_key = @conf['aws']['secret_access_key']
     aws.keypair_name = @conf['aws']['keypair_name']
+    aws.security_groups = @conf['aws']['security_groups']
 
     override.ssh.username = @conf['aws']['ssh']['username']
     override.ssh.private_key_path = @conf['aws']['ssh']['private_key_path']
