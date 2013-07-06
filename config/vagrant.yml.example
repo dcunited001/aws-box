@@ -2,10 +2,14 @@ default:
   box: aws-dummy
   aws:
     ami: ami-7747d01e
-    access_key_id: ACCESS_KEY_ID
-    secret_access_key: SECRET_ACCESS_KEY
+
+    # configure these in $VAGRANT_HOME/Vagrantfile
+    # access_key_id: 
+    # secret_access_key: 
+
     keypair_name: KeyPairName
     security_groups: ['vagrant']
+
     ssh:
       username: ubuntu
       private_key_path: ~/.ssh/KeyPairName.pem
