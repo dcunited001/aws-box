@@ -20,8 +20,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :aws do |aws, override|
     aws.ami = @conf['aws']['ami']
-    aws.access_key_id = @conf['aws']['access_key_id']
-    aws.secret_access_key = @conf['aws']['secret_access_key']
+    aws.region = @conf['aws']['region']
+    #aws.access_key_id = @conf['aws']['access_key_id'] if @conf['aws'].key? 'access_key_id'
+    #aws.secret_access_key = @conf['aws']['secret_access_key'] if @conf['aws'].key? 'secret_access_key'
+
     aws.keypair_name = @conf['aws']['keypair_name']
     aws.security_groups = @conf['aws']['security_groups']
 
