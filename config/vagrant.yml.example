@@ -1,12 +1,16 @@
 default:
   box: aws-dummy
   aws:
+    region: us-east-1
+
+    #ami's are region specific
     ami: ami-7747d01e
 
     # configure these in $VAGRANT_HOME/Vagrantfile
-    # access_key_id: 
-    # secret_access_key: 
+    # access_key_id:
+    # secret_access_key:
 
+    # keypairs & security groups are region-specific
     keypair_name: KeyPairName
     security_groups: ['vagrant']
 
